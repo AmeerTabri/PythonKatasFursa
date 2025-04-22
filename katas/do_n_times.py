@@ -27,6 +27,9 @@ if __name__ == '__main__':
     print("Calling another function 5 times:")
     do_n_times(print_message, 5)
 
+    print("Calling another function 0 times:")
+    do_n_times(print_message, 0)
+
     # Expected output:
     # Calling function 3 times:
     # Hello!

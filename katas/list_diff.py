@@ -1,14 +1,5 @@
 def find_difference(numbers):
-    """
-    Finds the difference between the largest and smallest numbers in the list.
-
-    Args:
-        numbers: the list of integers
-
-    Returns:
-        the difference between the largest and smallest numbers
-    """
-    return 0
+    return max(numbers) - min(numbers)
 
 
 if __name__ == '__main__':

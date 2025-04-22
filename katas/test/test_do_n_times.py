@@ -1,7 +1,8 @@
 import unittest
-from katas.do_n_times import say_hello
+from unittest.mock import MagicMock
+from katas.do_n_times import do_n_times, say_hello, print_message
 
 
-class TestHelloWorld(unittest.TestCase):
-    def test_hello_world(self):
+class TestDoNTimes(unittest.TestCase):
+    def test1(self):
         self.assertEqual(say_hello(), say_hello())

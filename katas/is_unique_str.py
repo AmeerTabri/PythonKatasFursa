@@ -1,13 +1,10 @@
 def is_unique(string):
-    """
-    Checks if a string has all unique characters (case-insensitive).
-
-    Args:
-        string: the input string
-
-    Returns:
-        True if all characters are unique, False otherwise
-    """
+    hist = {}
+    for char in string:
+        if char in hist:
+            return False
+        else:
+            hist[char] = 1
     return True
 
 

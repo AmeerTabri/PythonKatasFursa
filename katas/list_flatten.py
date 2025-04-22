@@ -1,15 +1,12 @@
 def flatten_list(nested_list):
-    """
-    Flattens a nested list into a single list of integers.
+    if not isinstance(nested_list, list):
+        return [nested_list]
 
-    Args:
-        nested_list: the input nested list
+    flattened_list = []
+    for elem in nested_list:
+        flattened_list += flatten_list(elem)
 
-    Returns:
-        a flat list containing all integers from the nested structure
-    """
-    # hint: isinstance()
-    return []
+    return flattened_list
 
 
 if __name__ == '__main__':
