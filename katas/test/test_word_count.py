@@ -1,17 +1,13 @@
-def count_words(sentence):
-    """
-    Counts the number of words in a given sentence.
-
-    Args:
-        sentence: the input string (a sentence)
-
-    Returns:
-        the number of words in the sentence
-    """
-    return 0
+import unittest
+from katas.word_count import count_words
 
 
-if __name__ == '__main__':
-    sentence = "This is a sample sentence for counting words."
-    word_count = count_words(sentence)
-    print(word_count)  # 8 should be printed
+class TestWordCount(unittest.TestCase):
+    def test1(self):
+        self.assertEqual(count_words(""), 0)
+        self.assertEqual(count_words("     "), 0)
+        self.assertEqual(count_words("   Hello World   "), 2)
+        self.assertEqual(count_words("word1  word2   word3"), 3)
+        self.assertEqual(count_words("Hello"), 1)
+        self.assertEqual(count_words("Hello\nworld\tHello\nworld\t"), 4)
+        self.assertEqual(count_words("Wait... what?! no way!"), 4)

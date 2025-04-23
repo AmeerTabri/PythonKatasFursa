@@ -1,14 +1,18 @@
 def count_words(sentence):
-    """
-    Counts the number of words in a given sentence.
+    # return len(sentence.strip().split())
+    count = 0
+    is_word = False
 
-    Args:
-        sentence: the input string (a sentence)
+    for char in sentence:
+        if char not in [' ', '\n', '\t']:
+            if not is_word:
+                count += 1
+                is_word = True
+        else:
+            is_word = False
 
-    Returns:
-        the number of words in the sentence
-    """
-    return 0
+    return count
+
 
 
 if __name__ == '__main__':
