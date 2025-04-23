@@ -1,15 +1,10 @@
 def sum_of_digits(input_str):
-    """
-    Calculates the sum of all digits in the given string.
-
-    Args:
-        input_str: the string containing digits and other characters
-
-    Returns:
-        the sum of all digits in the string
-    """
-    return 0
-
+    # return sum(int(char) for char in input_str if char.isdigit())
+    digits_sum = 0
+    for char in input_str:
+        if 0 <= ord(char) - ord('0') <= 9:
+            digits_sum += int(char)
+    return digits_sum
 
 if __name__ == '__main__':
     input1 = "abc123"
