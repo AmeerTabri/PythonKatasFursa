@@ -11,5 +11,3 @@ class TestTrueCounter(unittest.TestCase):
         self.assertEqual(count_true_values([True] * 1000), 1000)
         self.assertEqual(count_true_values([False] * 1000), 0)
         self.assertEqual(count_true_values([True, False] * 1000), 1000)
-
-

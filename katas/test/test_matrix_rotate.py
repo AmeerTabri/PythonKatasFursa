@@ -51,5 +51,3 @@ class TestMatrixRotate(unittest.TestCase):
             [25, 20, 15, 10, 5]
         ])
         self.assertEqual(self.output5, [])
-
-

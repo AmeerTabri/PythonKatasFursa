@@ -14,8 +14,6 @@ def count_words(sentence):
     return count
 
 
-
 if __name__ == '__main__':
-    sentence = "This is a sample sentence for counting words."
-    word_count = count_words(sentence)
+    word_count = count_words("This is a sample sentence for counting words.")
     print(word_count)  # 8 should be printed
