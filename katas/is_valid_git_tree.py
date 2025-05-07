@@ -1,18 +1,25 @@
+import collections
+
+
 def is_valid_git_tree(tree_map):
-    """
-    Determines if a given tree structure represents a valid Git tree.
+    all_nodes = set(tree_map.keys())
+    children = set(node for children in tree_map.values() for node in children)
+    roots = set(all_nodes - children)
+    if len(roots) != 1:
+        return False
 
-    A valid Git tree should:
-    1. Have exactly one root (no parent).
-    2. Contain no cycles.
+    root = roots.pop()
+    visited = set()
+    queue = collections.deque([root])
+    while queue:
+        node = queue.pop()
+        if node in visited:
+            return False
+        visited.add(node)
+        for child in tree_map[node]:
+            queue.append(child)
 
-    Args:
-        tree_map: a dictionary representing the Git tree (commit ID to list of child commit IDs)
-
-    Returns:
-        True if the tree is a valid Git tree, False otherwise
-    """
-    return False
+    return True
 
 
 if __name__ == '__main__':
