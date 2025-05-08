@@ -2,7 +2,7 @@ import unittest
 from katas.is_valid_git_tree import is_valid_git_tree
 
 
-class TestWordCount(unittest.TestCase):
+class TestIsValidGitTree(unittest.TestCase):
     def test1(self):
         tree1 = {
             "A": ["B", "C"],

@@ -1,16 +1,15 @@
 def max_profit(prices):
-    """
-    Finds the maximum profit that can be achieved by buying and selling the stock ONCE.
+    if not prices:
+        return 0
 
-    Aim for O(n)
+    max_future_price = prices[-1]
+    max_profit_result = 0
 
-    Args:
-        prices: a list of prices on each day
+    for price in reversed(prices):
+        max_profit_result = max(max_profit_result, max_future_price - price)
+        max_future_price = max(max_future_price, price)
 
-    Returns:
-        the maximum profit, or 0 if no profit can be achieved
-    """
-    return 0
+    return max_profit_result
 
 
 if __name__ == '__main__':
