@@ -1,16 +1,9 @@
 def max_profit(prices):
-    """
-    Finds the maximum profit that can be achieved by buying and selling the stock MULTIPLE times.
-
-    O(n) is the best complexity
-
-    Args:
-        prices: a list of prices on each day
-
-    Returns:
-        the maximum profit, or 0 if no profit can be achieved
-    """
-    return 0
+    profit = 0
+    for i in range(1, len(prices)):
+        if prices[i] > prices[i-1]:
+            profit += prices[i] - prices[i-1]
+    return profit
 
 
 if __name__ == '__main__':
