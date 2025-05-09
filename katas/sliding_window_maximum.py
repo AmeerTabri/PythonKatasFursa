@@ -1,35 +1,28 @@
+from collections import deque
+
+
+# o(n) time solution
 def max_sliding_window(nums, k):
-    """
-    Given an array of integers and a sliding window size, your task is to find the maximum value
-    in the window at each position as the window slides from left to right.
+    res = []
+    dq = deque()
 
-    For example, given the array [1, 3, -1, -3, 5, 3, 6, 7] and window size 3:
-    The output should be [3, 3, 5, 5, 6, 7].
+    for i in range(len(nums)):
+        if dq and dq[0] < i - k + 1:
+            dq.popleft()
+        while dq and nums[dq[-1]] < nums[i]:
+            dq.pop()
+        dq.append(i)
+        if i >= k - 1:
+            res.append(nums[dq[0]])
 
-    Window position                Max
-    ---------------               -----
-    [1  3  -1] -3  5  3  6  7       3
-     1 [3  -1  -3] 5  3  6  7       3
-     1  3 [-1  -3  5] 3  6  7       5
-     1  3  -1 [-3  5  3] 6  7       5
-     1  3  -1  -3 [5  3  6] 7       6
-     1  3  -1  -3  5 [3  6  7]      7
-
-    Args:
-        nums: list of integers
-        k: the size of the sliding window
-
-    Returns:
-        A list of the maximum values in each window
-    """
-    return []
+    return res
 
 
 if __name__ == '__main__':
-    nums = [1, 3, -1, -3, 5, 3, 6, 7]
-    k = 3
+    nums1 = [1, 3, -1, -3, 5, 3, 6, 7]
+    k1 = 3
 
-    result = max_sliding_window(nums, k)
+    result = max_sliding_window(nums1, k1)
     print(f"Sliding window maximums: {result}")  # Expected: [3, 3, 5, 5, 6, 7]
 
     # Additional test cases
@@ -42,3 +35,4 @@ if __name__ == '__main__':
     k3 = 1
     result3 = max_sliding_window(nums3, k3)
     print(f"Sliding window maximums: {result3}")  # Expected: [1, -1]
+    
