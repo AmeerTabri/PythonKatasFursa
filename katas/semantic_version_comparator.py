@@ -1,23 +1,23 @@
 def compare_versions(version1, version2):
-    """
-    Compares two semantic version strings to determine their relative order.
+    list1 = [int(elem) for elem in version1.split('.')]
+    list2 = [int(elem) for elem in version2.split('.')]
 
-    Semantic versioning follows the format "MAJOR.MINOR.PATCH" where:
-    - MAJOR version increments for incompatible API changes
-    - MINOR version increments for backward-compatible functionality
-    - PATCH version increments for backward-compatible bug fixes
+    i = 0
+    while i < min((len(list1), len(list2))):
+        if list1[i] > list2[i]:
+            return 1
+        elif list1[i] < list2[i]:
+            return -1
+        i += 1
 
-    Each component must be compared numerically, not lexicographically.
+    for j in range(i, len(list1)):
+        if list1[j] > 0:
+            return 1
 
-    Args:
-        version1: the first version string (e.g., "MAJOR.MINOR.PATCH")
-        version2: the second version string (e.g., "MAJOR.MINOR.PATCH")
+    for j in range(i, len(list2)):
+        if list2[j] > 0:
+            return -1
 
-    Returns:
-        -1 if version1 < version2
-         0 if version1 = version2
-         1 if version1 > version2
-    """
     return 0
 
 
