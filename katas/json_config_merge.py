@@ -60,7 +60,6 @@ def json_configs_merge(*json_paths: str) -> dict[str, Any]:
     return None
 
 
-
 if __name__ == '__main__':
     # Example usage; make sure the files exist for this to run.
     config = json_configs_merge('default.json', 'production.json', 'us-east-1-production.json')

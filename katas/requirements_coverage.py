@@ -2,28 +2,44 @@ from typing import List
 
 
 def select_minimal_test_cases(test_cases: List[List[int]]) -> List[int]:
-    """
-    In software testing, it's often required to select a minimal set of test cases that cover all the requirements.
-    You are given a set of test cases and their associated covered requirements.
-    Your task is to select the minimal subset of test cases such that all requirements are covered.
+    all_requirements = set(r for case in test_cases for r in case)
+    n = len(test_cases)
 
-    For example, you have the following test cases and requirements they cover:
+    def backtrack(start, path):
+        covered = set()
+        for idx in path:
+            covered.update(test_cases[idx])
+        if covered == all_requirements:
+            return list(path)
 
-    test_cases = [
-        [1, 2, 3],   # Test case 0 covers requirements 1, 2, 3
-        [1, 4],      # Test case 1 covers requirements 1, 4
-        [2, 3, 4],   # Test case 2 covers requirements 2, 3, 4
-        [1, 5],      # Test case 3 covers requirements 1, 5
-        [3, 5]       # Test case 4 covers requirements 3, 5
-    ]
+        for i in range(start, n):
+            result = backtrack(i + 1, path + [i])
+            if result:
+                return result
+        return None
 
-    Args:
-        test_cases: a list of test cases, where each test case is a list of requirements it covers.
-                    Assume each requirement is covered by at least one test case.
+    # Try all sizes from 1 to n
+    for size in range(1, n + 1):
+        result = []
 
-    Returns:
-        A list of indices of the minimal subset of test cases that covers all requirements
-    """
+        def dfs(index, path):
+            if len(path) == size:
+                covered = set()
+                for i in path:
+                    covered.update(test_cases[i])
+                if covered == all_requirements:
+                    return path
+                return None
+            for i in range(index, n):
+                res = dfs(i + 1, path + [i])
+                if res:
+                    return res
+            return None
+
+        result = dfs(0, [])
+        if result:
+            return result
+
     return []
 
 
