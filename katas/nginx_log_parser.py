@@ -4,15 +4,15 @@ import re
 
 def parse_log(log: str) -> Dict[str, str]:
     pattern = (
-        r'(?P<client_ip>\S+)'  # IP address (e.g. 122.176.223.47)
+        r'(?P<client_ip>\S+)'  # IP address 
         r' - - \['
         r'(?P<date>[^\]]+)'  # Date inside square brackets
         r'\] "'
-        r'(?P<http_method>\S+)'  # HTTP method (GET/POST/...)
+        r'(?P<http_method>\S+)'  # HTTP method 
         r' (?P<path>\S+)'  # URL path
         r' HTTP/(?P<http_version>\S+)'  # HTTP version
-        r'" (?P<status>\d{3})'  # Status code (e.g. 200)
-        r' (?P<response_bytes>\d+|-)'  # Response size (or '-' if none)
+        r'" (?P<status>\d{3})'  # Status code 
+        r' (?P<response_bytes>\d+|-)'  # Response size 
         r' "[^"]*" "(?P<user_agent>[^"]+)"'  # User agent string
     )
 
